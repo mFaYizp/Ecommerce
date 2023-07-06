@@ -1,6 +1,6 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@mui/icons-material";
 import { useState } from "react";
-import { styled } from "styled-components";
+import styled from "styled-components";
 import { sliderItems } from "../data";
 import { mobile } from "../responsive";
 
@@ -88,7 +88,7 @@ const Slider = () => {
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
         {sliderItems.map((item) => (
-          <Slide bg={item.bg} >
+          <Slide bg={item.bg}>
             <ImgContainer>
               <Image src={item.img} />
             </ImgContainer>

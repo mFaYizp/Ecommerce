@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Announcement from "../components/Announcement";
@@ -9,7 +9,7 @@ const Container = styled.div``;
 
 const Wrapper = styled.div`
   padding: 20px;
-  ${mobile({padding: "10px" })}
+  ${mobile({ padding: "10px" })}
 `;
 
 const Title = styled.h1`
@@ -35,7 +35,7 @@ const TopButton = styled.button`
 `;
 
 const TopTexts = styled.div`
-  ${mobile({display: "none" })}
+  ${mobile({ display: "none" })}
 `;
 
 const TopText = styled.span`
@@ -47,7 +47,7 @@ const TopText = styled.span`
 const Button = styled.div`
   display: flex;
   justify-content: space-between;
-  ${mobile({flexDirection: "column" })}
+  ${mobile({ flexDirection: "column" })}
 `;
 
 const Info = styled.div`
@@ -57,7 +57,7 @@ const Info = styled.div`
 const Product = styled.div`
   display: flex;
   justify-content: space-between;
-  ${mobile({flexDirection: "column" })}
+  ${mobile({ flexDirection: "column" })}
 `;
 
 const ProductDetail = styled.div`
@@ -111,7 +111,7 @@ const ProductAmount = styled.div`
 const ProductPrice = styled.div`
   font-size: 30px;
   font-weight: 200;
-  ${mobile({marginBottom: "20px" })}
+  ${mobile({ marginBottom: "20px" })}
 `;
 
 const Hr = styled.hr`
@@ -125,19 +125,19 @@ const Summary = styled.div`
   border: 0.5px solid lightgrey;
   border-radius: 10px;
   padding: 20px;
-  height: 50vh; 
+  height: 50vh;
 `;
 
 const SummaryItem = styled.div`
   margin: 30px 0px;
   display: flex;
   justify-content: space-between;
-  font-weight: ${props=>props.type === "total" && "500"};
-  font-size: ${props=>props.type === "total" && "24px"};
+  font-weight: ${(props) => props.type === "total" && "500"};
+  font-size: ${(props) => props.type === "total" && "24px"};
 `;
 
 const SummaryTitle = styled.h1`
-   font-weight: 200;
+  font-weight: 200;
 `;
 
 const SummaryItemText = styled.span``;
@@ -152,7 +152,6 @@ const SummaryButton = styled.button`
   font-weight: 600;
   cursor: pointer;
 `;
-
 
 const Cart = () => {
   return (
@@ -196,13 +195,13 @@ const Cart = () => {
                 <ProductPrice>$ 30</ProductPrice>
               </PriceDetail>
             </Product>
-            <Hr/>
+            <Hr />
             <Product>
               <ProductDetail>
                 <Image src="https://i.pinimg.com/originals/2d/af/f8/2daff8e0823e51dd752704a47d5b795c.png" />
                 <Details>
                   <ProductName>
-                    <b>Product:</b>  HAKURA T-SHIRT
+                    <b>Product:</b> HAKURA T-SHIRT
                   </ProductName>
                   <ProductId>
                     <b>ID:</b> 5986454897
@@ -224,24 +223,24 @@ const Cart = () => {
             </Product>
           </Info>
           <Summary>
-           <SummaryTitle>ORDER SUMMARY</SummaryTitle>
-           <SummaryItem>
+            <SummaryTitle>ORDER SUMMARY</SummaryTitle>
+            <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
               <SummaryItemPrice>$ 80</SummaryItemPrice>
-           </SummaryItem>
-           <SummaryItem>
+            </SummaryItem>
+            <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
               <SummaryItemPrice>$ 5.90</SummaryItemPrice>
-           </SummaryItem>
-           <SummaryItem>
+            </SummaryItem>
+            <SummaryItem>
               <SummaryItemText>Shipping Discount</SummaryItemText>
               <SummaryItemPrice>$ -5.90</SummaryItemPrice>
-           </SummaryItem>
-           <SummaryItem type="total">
+            </SummaryItem>
+            <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>$ 80</SummaryItemPrice>
-           </SummaryItem>
-           <SummaryButton>CHECKOUT NOW</SummaryButton>
+            </SummaryItem>
+            <SummaryButton>CHECKOUT NOW</SummaryButton>
           </Summary>
         </Button>
       </Wrapper>

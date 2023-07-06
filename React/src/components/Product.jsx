@@ -3,7 +3,7 @@ import {
   SearchOutlined,
   ShoppingCartOutlined,
 } from "@mui/icons-material";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 const Info = styled.div`
   opacity: 0;
@@ -31,7 +31,7 @@ const Container = styled.div`
   background-color: #f5fbfb;
   position: relative;
 
-  &:hover ${Info}{
+  &:hover ${Info} {
     opacity: 1;
   }
 `;
@@ -56,9 +56,9 @@ const Icon = styled.div`
   align-items: center;
   justify-content: center;
   margin: 10px;
-  transition: all 0.5s ease; 
+  transition: all 0.5s ease;
 
-  &:hover{
+  &:hover {
     background-color: #e9f5f5;
     transform: scale(1.1);
   }

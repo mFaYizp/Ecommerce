@@ -4,36 +4,22 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
-import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
+import { BrowserRouter , Route, Routes , Navigate} from "react-router-dom";
 
 const App = () => {
-  const user = true
+  const user = true;
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/products/:category">
-          <ProductList />
-        </Route>
-        <Route path="/product/:id">
-          <Product />
-        </Route>
-        <Route path="/product/:id">
-          <Product />
-        </Route>
-        <Route path="/cart">
-          <Cart />
-        </Route>
-        <Route path="/login">
-        {user ? <Redirect to="/"/>: <Login/>}
-        </Route>
-        <Route path="/register">
-        {user ? <Redirect to="/"/>: <Register />}       
-        </Route>
-      </Switch>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<Home />}/>
+        <Route path="/products/:category" element={<ProductList /> } />
+        <Route path="/product/:id" element={<Product />} />
+        <Route path="/cart" element={<Cart />}/>
+        <Route path="/login" element={user ? (<Navigate replace to="/" /> ): (<Login />)}/>
+        <Route path="/register" element={user ?( <Navigate replace to="/" /> ):( <Register />)} />
+        
+      </Routes>
+    </BrowserRouter>
   );
 };
 
