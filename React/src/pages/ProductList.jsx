@@ -18,7 +18,7 @@ const FilterContainer = styled.div`
 `;
 const Filter = styled.div`
   margin: 20px;
-  ${mobile({ width: "0px 20px", display: "flex", flexDirection: "column" })}
+  ${mobile({ width: "0px 20px", display: "flex", flexDirection: "column" })};
 `;
 const FilterText = styled.div`
   font-size: 20px;
@@ -38,17 +38,16 @@ const Option = styled.option``;
 const ProductList = () => {
   const location = useLocation();
   const cat = location.pathname.split("/")[2];
-  const [filter, setFilters] = useState({});
+  const [filters, setFilters] = useState({});
+  const [sort, setSort] = useState({});
 
-  const handleFilters = (e) => {
-    const value = e.target.value;
+  const handleFilters = (event) => {
+    const value = event.target.value;
     setFilters({
-      ...filter,
-      [e.target.name]: value,
+      ...filters,
+      [event.target.name]: value,
     });
   };
-
-  console.log(filter);
   return (
     <Container>
       <Navbar />
@@ -77,14 +76,14 @@ const ProductList = () => {
         </Filter>
         <Filter>
           <FilterText>Sort Products:</FilterText>
-          <Select>
-            <Option selected>Newest</Option>
-            <Option>Price (asc)</Option>
-            <Option>Price (desc)</Option>
+          <Select onChange={(event) => setSort(event.target.value)}>
+            <Option value="newest">Newest</Option>
+            <Option value="asc">Price (asc)</Option>
+            <Option value="desc">Price (desc)</Option>
           </Select>
         </Filter>
       </FilterContainer>
-      <Products />
+      <Products cat={cat} filters={filters} sort={sort} />
       <Newsletter />
       <Footer />
     </Container>
