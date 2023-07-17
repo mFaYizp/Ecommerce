@@ -11,20 +11,34 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-const Products = ({cat,filters,sort}) => {
-  const [products,setProducts] = useState([]);
-  const [filteredProducts,setFilteredProducts] = useState([]);
- 
-  useEffect(()=>{
-    const getProducts = async()=>{
-      try{
-        const res = await axios.get("http://localhost:5000/api/products");
-        console.log(res);
-      } catch (err) {}
-  };
-    getProducts();
- },[cat])
+const Products = ({ cat, filters, sort }) => {
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const res = await axios.get(
+          cat
+            ? `http://localhost:5000/api/products?category=${cat}`
+            : "http://localhost:5000/api/products"
+        );
+        setProducts(res.data);
+      } catch (err) {}
+    };
+    getProducts();
+  }, [cat]);
+
+  useEffect(() => {
+    cat &&
+      setFilteredProducts(
+        products.filter((item) =>
+          Object.entries(filters).concat(([key, value]) =>
+            item[key].includes(value)
+          )
+        )
+      );
+  }, [products, cat, filters]);
 
   return (
     <Container>
