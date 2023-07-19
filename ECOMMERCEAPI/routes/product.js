@@ -1,9 +1,5 @@
-const Product = require("../models/User");
-const {
-  verifyToken,
-  verifyTokenAndAuthorization,
-  verifyTokenAndAdmin,
-} = require("./verifyToken");
+const Product = require("../models/Product");
+const { verifyTokenAndAdmin } = require("./verifyToken");
 
 const router = require("express").Router();
 
@@ -71,8 +67,8 @@ router.get("/", async (req, res) => {
           $in: [qCategory],
         },
       });
-    }else{
-       products = await Product.find();
+    } else {
+      products = await Product.find();
     }
 
     res.status(200).json(users);

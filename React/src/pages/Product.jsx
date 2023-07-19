@@ -130,6 +130,10 @@ const Product = () => {
     }
   };
 
+  const handleClick = ()=>{
+    //upadate cart
+  }
+
   return (
     <Container>
       <Navbar />
@@ -164,7 +168,7 @@ const Product = () => {
               <Amount>{quantity}</Amount>
               <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
-            <Button>Add To Cart</Button>
+            <Button onClick={handleClick}>Add To Cart</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

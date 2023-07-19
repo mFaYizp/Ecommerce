@@ -1,4 +1,4 @@
-const Cart = require("../models/User");
+const Cart = require("../models/Cart");
 const {
   verifyToken,
   verifyTokenAndAuthorization,
