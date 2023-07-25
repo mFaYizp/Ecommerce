@@ -32,7 +32,7 @@ const Products = ({ cat, filters, sort }) => {
     cat &&
       setFilteredProducts(
         products.filter((item) =>
-          Object.entries(filters).concat(([key, value]) =>
+          Object.entries(filters).every(([key, value]) =>
             item[key].includes(value)
           )
         )
