@@ -13,7 +13,7 @@ const Success = () => {
     >
       <img
         alt='logo'
-        src='https://img.freepik.com/premium-vector/abstract-modern-ecommerce-logo-design-colorful-gradient-shopping-bag-logo-template_467913-995.jpg?w=2000'
+        src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1h4J7nBbqeaBUY9emjXqScfoi0IAk_NJpzwizYuAVRpiPKIncISrBk9K58HLOxeB3TBk&usqp=CAU'
         style={{
           width: "10vw",
           height: "20vh"
@@ -27,7 +27,7 @@ const Success = () => {
           borderRadius: "10px"
         }}
       >SUCCESSFUL</p>
-      <p>Thanks for shopping with Fitzy</p>
+      <p>Thanks for shopping with FAZ.</p>
     </div>
   )
 }

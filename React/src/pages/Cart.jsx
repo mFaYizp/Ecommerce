@@ -5,6 +5,12 @@ import Announcement from "../components/Announcement";
 import { Add, Remove } from "@mui/icons-material";
 import { mobile } from "../responsive";
 import { useSelector } from "react-redux";
+import StripeCheckout from "react-stripe-checkout";
+import { useEffect, useState } from "react";
+import { userRequest } from "../requestMethods";
+import { useNavigate } from "react-router-dom";
+
+const KEY = "pk_test_51NPdbOSDpDdowsWd3EBuyb5pCPpujk8Fdj3ZLfPVodbY8XOcEHSx5s7XCT1vGLLsDMfSPqkS8MQTbREHMT1pezvE00hCBPbQp5"
 
 const Container = styled.div``;
 
@@ -156,6 +162,26 @@ const SummaryButton = styled.button`
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
+  const [stripeToken, setStripeToken] = useState(null);
+  const navigate = useNavigate();
+
+  const onToken = (token) => {
+    setStripeToken(token);
+  };
+
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const res = await userRequest.post("/checkout/payment", {
+          tokenId: stripeToken.id,
+          amount: cart.total * 100,
+        });
+        navigate.push("/success", { data: res.data });
+      } catch (err) {}
+    };
+    stripeToken && makeRequest();
+  }, [stripeToken, cart.total, navigate]);
+
   return (
     <Container>
       <Navbar />
@@ -173,7 +199,7 @@ const Cart = () => {
         <Button>
           <Info>
             {cart.products.map((product) => (
-              <Product>
+              <Product key={product._id}>
                 <ProductDetail>
                   <Image src={product.img} />
                   <Details>
@@ -221,7 +247,18 @@ const Cart = () => {
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
             </SummaryItem>
-            <SummaryButton>CHECKOUT NOW</SummaryButton>
+            <StripeCheckout
+              name="FAZ."
+              image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1h4J7nBbqeaBUY9emjXqScfoi0IAk_NJpzwizYuAVRpiPKIncISrBk9K58HLOxeB3TBk&usqp=CAU"
+              billingAddress
+              shippingAddress
+              description={`Your total is $${cart.total}`}
+              amount={cart.total * 100} //based on cents
+              token={onToken}
+              stripeKey={KEY}
+            >
+              <SummaryButton>CHECKOUT NOW</SummaryButton>
+            </StripeCheckout>
           </Summary>
         </Button>
       </Wrapper>
