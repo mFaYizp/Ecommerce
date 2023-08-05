@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { userRequest } from "../requestMethods";
 import { useNavigate } from "react-router-dom";
 
-const KEY = "pk_test_51NPdbOSDpDdowsWd3EBuyb5pCPpujk8Fdj3ZLfPVodbY8XOcEHSx5s7XCT1vGLLsDMfSPqkS8MQTbREHMT1pezvE00hCBPbQp5"
+const KEY = `pk_test_51NPdbOSDpDdowsWd3EBuyb5pCPpujk8Fdj3ZLfPVodbY8XOcEHSx5s7XCT1vGLLsDMfSPqkS8MQTbREHMT1pezvE00hCBPbQp5`;
 
 const Container = styled.div``;
 
@@ -64,6 +64,7 @@ const Info = styled.div`
 const Product = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 2px;
   ${mobile({ flexDirection: "column" })}
 `;
 
@@ -176,7 +177,7 @@ const Cart = () => {
           tokenId: stripeToken.id,
           amount: cart.total * 100,
         });
-        navigate.push("/success", { data: res.data });
+        navigate("/success", { data: res.data });
       } catch (err) {}
     };
     stripeToken && makeRequest();

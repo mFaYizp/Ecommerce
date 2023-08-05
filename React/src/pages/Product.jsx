@@ -139,7 +139,7 @@ const Product = () => {
 
   return (
     <Container>
-      <Navbar />
+      <Navbar /> 
       <Announcement />
       <Wrapper>
         <ImgContainer>

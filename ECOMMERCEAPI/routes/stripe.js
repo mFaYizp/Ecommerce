@@ -1,12 +1,19 @@
 const router = require("express").Router();
-const stripe = require("stripe")(process.env.STRIPE_KEY);
+const stripe = require("stripe")("sk_test_51NPdbOSDpDdowsWdGjBY4ZGKEWKx09BdfHCx8Jrucxyt64W42DDTnutVDoZkolxiOUI8wJtihl2UMfjwP3copGKg00BHtKEfgt");
 
 router.post("/payment", (req, res) => {
-  stripe.charges.create(
+  stripe.paymentIntents.create(
     {
-      source: req.body.tokenId,
       amount: req.body.amount,
-      currency: "usd",
+      currency: "inr",
+      description: "Test Payment 3",
+      confirm: true,
+      payment_method_data: {
+        type: "card",
+        card: {
+          token: req.body.tokenId,
+        },
+      },
     },
     (stripeErr, stripeRes) => {
       if (stripeErr) {
