@@ -14,6 +14,7 @@ const OrderSchema = new mongoose.Schema(
         },
       },
     ],
+    img: {type: String},
     amount: { type: Number, required: true },
     address: { type: Object, required: true },
     status: { type: String, default: "pending" },
