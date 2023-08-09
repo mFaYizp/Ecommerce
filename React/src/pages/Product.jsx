@@ -153,14 +153,14 @@ const Product = () => {
             <Filter>
               <FilterTitle>Color</FilterTitle>
               {product.color?.map((c) => (
-                <FilterColor color={c} Key={c} onClick={() => setColor(c)} />
+                <FilterColor color={c} Key={c._id} onClick={() => setColor(c)} />
               ))}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
               <FilterSize onChange={(e) => setSize(e.target.value)}>
                 {product.size?.map((s) => (
-                  <FilterSizeOption key={s}>{s}</FilterSizeOption>
+                  <FilterSizeOption key={s._id}>{s}</FilterSizeOption>
                 ))}
               </FilterSize>
             </Filter>
